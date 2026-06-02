@@ -1,0 +1,3 @@
+class ManagerNiveles:
+
+    pass
