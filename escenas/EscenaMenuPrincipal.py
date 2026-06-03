@@ -5,11 +5,12 @@ class EscenaMenuPrincipal(EstadoJuego):
     def __init__(self, ancho, alto):
         super().__init__()
 
-        # imagen
+        # imagen provisional
         fondo = pg.image.load("assets/imagenes/fondoMenu.jpeg").convert()
         self.fondo = pg.transform.scale(fondo, (ancho, alto))
 
-        # iluminacion
+        # iluminacion, seria mejor cambiarla a una elipse, se veria mas natural
+        # falta agregar movimiento y parpadeos a la llama de la vela 
         self.posVela = (ancho // 2, (alto // 2) + 150)
 
         self.radioActual = 0

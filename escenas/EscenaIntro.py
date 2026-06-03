@@ -24,10 +24,10 @@ class EscenaIntro(EstadoJuego):
 
         if self.subestado == "FADE_IN" and self.transicion.transicionCompleta:
             self.subestado = "MOSTRANDO_LOGO"
-            self.timerInicio = pg.time.get_ticks()
+            self.tiempoInicio = pg.time.get_ticks()
 
         elif self.subestado == "MOSTRANDO_LOGO":
-            if pg.time.get_ticks() - self.timerInicio >= self.tiempoEspera:
+            if pg.time.get_ticks() - self.tiempoInicio >= self.tiempoEspera:
                 self.subestado = "FADE_OUT"
                 self.transicion.iniciarFadeOut()
 

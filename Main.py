@@ -1,6 +1,7 @@
 import sys, pygame as pg, Boton, ControladorEstados
-from escenas.EscenaIntro import EscenaIntro as EscenaIntro
-from escenas.EscenaMenuPrincipal import EscenaMenuPrincipal as EscenaMenuPrincipal
+from escenas.EscenaIntro import EscenaIntro as intro
+from escenas.EscenaMenuPrincipal import EscenaMenuPrincipal as menuPrincipal
+from escenas.EscenaJuego import EscenaJuego as juego
 
 # funciones para los botones de prueba
 def empezarJuego():
@@ -43,8 +44,9 @@ rectFondoMenuPrincipal.center = (anchoVentana // 2, altoVentana // 2)
 
 # estados de juego de prueba
 listaEstados = {
-    "INTRO": EscenaIntro(anchoVentana, altoVentana, logo),
-    "MENU": EscenaMenuPrincipal(anchoVentana, altoVentana)
+    "INTRO": intro(anchoVentana, altoVentana, logo),
+    "MENU": menuPrincipal(anchoVentana, altoVentana),
+    "JUEGO": juego(anchoVentana, altoVentana)
 
 }
 
@@ -52,7 +54,8 @@ listaEstados = {
 controlador = ControladorEstados.ControladorEstados(estadoInicial = "INTRO", listaEstados = listaEstados)
 
 # loop del juego
-while True:
+ejecutandose = True
+while ejecutandose:
     posicionMouse = pg.mouse.get_pos()
     click = pg.mouse.get_pressed()
     dt = reloj.tick(60) / 1000.0
@@ -60,7 +63,7 @@ while True:
     eventos = pg.event.get()
     for evento in eventos:
         if evento.type == pg.QUIT:
-            pg.quit()
+            ejecutandose = False
 
         elif evento.type == pg.KEYDOWN:
             # cambiar a modo ventana
@@ -72,3 +75,6 @@ while True:
     controlador.dibujar(pantalla)
 
     pg.display.flip()
+
+pg.quit()
+sys.exit()

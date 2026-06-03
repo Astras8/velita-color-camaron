@@ -6,7 +6,7 @@ class AnimacionFade:
         self.capaNegra.fill((0, 0, 0))
 
         self.alfaActual = 0
-        self.modo = None
+        self.modo = None # tiene dos modos, el "Fade In" y el "Fade Out"
 
         self.velocidad = velocidadFade
         self.transicionCompleta = False
