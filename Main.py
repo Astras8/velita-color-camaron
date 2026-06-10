@@ -32,7 +32,7 @@ reloj = pg.time.Clock()
 dt = 0
 
 # logo
-logo = pg.image.load("assets/imagenes/prospera.png").convert_alpha()
+logo = pg.image.load("assets/imagenes/garto.jpg").convert_alpha()
 
 rectLogo = logo.get_rect(center = (anchoVentana // 2,  altoVentana // 2))
 
