@@ -2,6 +2,7 @@ import sys, pygame as pg, Boton, ControladorEstados
 from escenas.EscenaIntro import EscenaIntro as intro
 from escenas.EscenaMenuPrincipal import EscenaMenuPrincipal as menuPrincipal
 from escenas.EscenaJuego import EscenaJuego as juego
+from escenas.EscenaMinijuego import EscenaMinijuego as Minijuego
 
 # funciones para los botones de prueba
 def empezarJuego():
@@ -46,8 +47,8 @@ rectFondoMenuPrincipal.center = (anchoVentana // 2, altoVentana // 2)
 listaEstados = {
     "INTRO": intro(anchoVentana, altoVentana, logo),
     "MENU": menuPrincipal(anchoVentana, altoVentana),
-    "JUEGO": juego(anchoVentana, altoVentana)
-
+    "JUEGO": juego(anchoVentana, altoVentana),
+    "MINIJUEGO":  Minijuego(anchoVentana, altoVentana)
 }
 
 # controlador
