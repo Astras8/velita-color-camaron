@@ -6,9 +6,6 @@ class Escena:
         # cual es el proximo estado despues del actual
         self.proximoEstado = None
 
-        # traslada los datos del estado actual al proximo
-        self.persistir = {}
-
     def manejarEventos(self, eventos):
         pass
     
