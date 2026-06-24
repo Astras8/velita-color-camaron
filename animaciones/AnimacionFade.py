@@ -1,13 +1,19 @@
+### clase que define la animacion usada por el fade in y fade out ###
+
 import pygame as pg
 
 class AnimacionFade:
     def __init__(self, pantallaAncho, pantallaAlto, velocidadFade = 3):
+        ## atributos base ##
+        # la "capa negra" de la pantalla, la idea es que se vaya bajando la opacidad para simular el fade in y fade out
         self.capaNegra = pg.Surface((pantallaAncho, pantallaAlto)).convert_alpha()
         self.capaNegra.fill((0, 0, 0))
 
+        # opacidad y modo actual
         self.alfaActual = 0
         self.modo = None # tiene dos modos, el "Fade In" y el "Fade Out"
 
+        # la velocidad a la que se ejecuta el fade y comprobacion de si se completo o no
         self.velocidad = velocidadFade
         self.transicionCompleta = False
 

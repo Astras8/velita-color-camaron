@@ -1,4 +1,6 @@
-import sys, pygame as pg, Boton, ControladorEstados
+# imports
+import pygame as pg, interfaz.Boton as Boton, controladores.ControladorEscenas as ControladorEscenas
+
 from escenas.EscenaIntro import EscenaIntro as intro
 from escenas.EscenaMenuPrincipal import EscenaMenuPrincipal as menuPrincipal
 from escenas.EscenaJuego import EscenaJuego as juego
@@ -10,13 +12,9 @@ def empezarJuego():
 
 def salirJuego():
     pg.quit()
-    sys.exit()
 
 # inicia el juego
 pg.init()
-
-# fondos de prueba
-fondo = ["assets/imagenes/fondoMenu.jpeg"]
 
 # botones de prueba
 botonComenzar = Boton.Boton(x = 300, y = 200, ancho = 200, alto = 60, texto = "Empezar", callback = empezarJuego, colorBase = (40, 160, 80), colorHover = (60, 200, 100))
@@ -24,7 +22,7 @@ botonSalir = Boton.Boton(x = 300, y = 300, ancho = 200, alto = 60, texto = "Sali
 
 botones = [botonComenzar, botonSalir]
 
-# ventana
+# atributos de la ventana
 anchoVentana = 1980
 altoVentana = 1020
 pantalla = pg.display.set_mode((anchoVentana, altoVentana), pg.FULLSCREEN | pg.SCALED)
@@ -38,21 +36,22 @@ logo = pg.image.load("assets/imagenes/garto.jpg").convert_alpha()
 rectLogo = logo.get_rect(center = (anchoVentana // 2,  altoVentana // 2))
 
 # fondos
+fondo = ["assets/imagenes/fondoMenu.jpeg"]
 fondoMenuPrincipal = pg.image.load(fondo[0]).convert_alpha()
 
 rectFondoMenuPrincipal = fondoMenuPrincipal.get_rect()
 rectFondoMenuPrincipal.center = (anchoVentana // 2, altoVentana // 2)
 
-# estados de juego de prueba
+# estados de juego de prueba, estos se envian al controlador de escenas
 listaEstados = {
     "INTRO": intro(anchoVentana, altoVentana, logo),
     "MENU": menuPrincipal(anchoVentana, altoVentana),
-    "JUEGO": juego(anchoVentana, altoVentana),
+    "JUEGO": juego(anchoVentana, altoVentana),  
     "MINIJUEGO":  Minijuego(anchoVentana, altoVentana)
 }
 
 # controlador
-controlador = ControladorEstados.ControladorEstados(estadoInicial = "INTRO", listaEstados = listaEstados)
+controlador = ControladorEscenas.ControladorEstados(estadoInicial = "INTRO", listaEstados = listaEstados)
 
 # loop del juego
 ejecutandose = True
@@ -78,4 +77,3 @@ while ejecutandose:
     pg.display.flip()
 
 pg.quit()
-sys.exit()
