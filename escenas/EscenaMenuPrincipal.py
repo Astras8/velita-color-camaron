@@ -25,6 +25,7 @@ class EscenaMenuPrincipal(Escena):
         self.texturaLuz = pg.Surface((diametroMax, diametroMax)).convert()
         self.texturaLuz.fill((0, 0, 0))
 
+        ## DISCLAIMER: reemplazar esto con los botones ya implementados como clase
         # atributos de los botones
         self.fuente = pg.font.Font(None, 50)
         

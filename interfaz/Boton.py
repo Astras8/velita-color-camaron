@@ -36,6 +36,6 @@ class Boton:
             self.colorActual = self.colorBase
             self.presionado = False
 
-    def draw(self, superficie):
+    def dibujar(self, superficie):
         pg.draw.rect(superficie, self.colorActual, self.rect, border_radius = 8)
         superficie.blit(self.texto, self.textoRect)
