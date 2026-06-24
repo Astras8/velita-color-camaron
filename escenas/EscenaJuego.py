@@ -4,6 +4,7 @@ from animaciones.AnimacionFade import AnimacionFade as fade
 import Jugador as lupi
 import Camara
 import ObjetoMapa
+import Colision
 
 class EscenaJuego(EstadoJuego):
     def __init__(self, ancho, alto):
@@ -26,6 +27,8 @@ class EscenaJuego(EstadoJuego):
         self.altoMapa = self.filas * self.tamañoTile
 
         self.lupi = lupi.Jugador(self.anchoMapa // 2, self.altoMapa // 2)
+        
+        self.colision = Colision.Colision()
 
         self.mapaSuperficie = pg.Surface((self.anchoMapa, self.altoMapa)).convert()
 
@@ -56,7 +59,7 @@ class EscenaJuego(EstadoJuego):
                 if valor == 1:
                     self.listaObjetos.append(ObjetoMapa.ObjetoMapa(x, y, self.tamañoTile, self.tamañoTile, (30, 30, 35)))
 
-        objetoPrueba = ObjetoMapa.ObjetoMapa(50, 50, 50, 50, (150, 150, 150))
+        objetoPrueba = ObjetoMapa.ObjetoMapa(100,100, 50, 50, (150, 150, 150))
         self.listaObjetos.append(objetoPrueba)
 
     def manejarEventos(self, eventos):
@@ -82,6 +85,7 @@ class EscenaJuego(EstadoJuego):
 
         if not self.cambiandoEscena:
             self.lupi.actualizar(dt, self.anchoMapa, self.altoMapa)
+            self.colision.resolver(self.lupi, self.listaObjetos)
 
             self.camara.actualizar(self.lupi, self.anchoMapa, self.altoMapa)
 
